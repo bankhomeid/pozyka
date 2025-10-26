@@ -37,21 +37,22 @@
       justify-content: center;
       align-items: flex-start;
       min-height: 100vh;
-      padding: 20px 0;
+      padding: 30px 0; /* Збільшено відступ */
     }
 
     .container {
       width: 100%;
-      max-width: 800px;
-      padding: 0 10px;
+      max-width: 1200px; /* Збільшено максимальну ширину для ПК */
+      padding: 0 20px; /* Збільшено горизонтальний відступ */
     }
 
     .header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-bottom: 15px;
-      margin-bottom: 25px;
+      padding-bottom: 20px; /* Збільшено відступ */
+      margin-bottom: 30px; /* Збільшено відступ */
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Додано розділювач */
     }
 
     .logo {
@@ -60,9 +61,9 @@
     }
 
     .logo-icon {
-      width: 24px;
-      height: 24px;
-      margin-right: 8px;
+      width: 32px; /* Збільшено розмір */
+      height: 32px; /* Збільшено розмір */
+      margin-right: 10px;
     }
 
     .logo-icon svg path,
@@ -72,7 +73,7 @@
     }
 
     .logo-text {
-      font-size: 18px;
+      font-size: 22px; /* Збільшено розмір */
       font-weight: 700;
     }
 
@@ -80,35 +81,55 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      width: 25px;
-      height: 18px;
+      width: 30px; /* Збільшено розмір */
+      height: 22px; /* Збільшено розмір */
       cursor: pointer;
+      transition: transform 0.3s;
     }
+    
+    /* Десктопний стиль кнопки меню */
+    .menu-icon-btn {
+        display: none; /* Приховано на мобільних за замовчуванням */
+        background-color: var(--color-accent-blue);
+        color: var(--color-dark-bg);
+        padding: 8px 15px;
+        border-radius: 8px;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+        border: none;
+        transition: background-color 0.2s;
+    }
+    
+    .menu-icon-btn:hover {
+        background-color: var(--card-accent-blue-dark);
+    }
+
 
     .menu-icon span {
       display: block;
-      height: 3px;
+      height: 4px; /* Збільшено товщину */
       background-color: var(--color-text-white);
-      border-radius: 1.5px;
+      border-radius: 2px;
     }
-
+    
     .gradient-text-wrapper {
       display: flex;
       align-items: baseline;
       justify-content: center;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
 
     .gradient-text-prefix {
-      font-size: 16px;
+      font-size: 20px; /* Збільшено розмір */
       font-weight: 600;
       color: var(--color-text-white);
-      margin-right: 4px;
+      margin-right: 6px;
     }
 
     .gradient-text {
-      font-size: 30px;
-      font-weight: 700;
+      font-size: 48px; /* Збільшено розмір */
+      font-weight: 800;
       background: linear-gradient(90deg, var(--color-green-gradient-start) 0%, var(--color-accent-blue) 50%, var(--color-green-gradient-start) 100%);
       background-size: 200% auto;
       -webkit-background-clip: text;
@@ -122,18 +143,18 @@
     }
 
     .sub-heading {
-      font-size: 18px;
+      font-size: 22px; /* Збільшено розмір */
       font-weight: 600;
       color: var(--color-green-gradient-start);
       text-align: center;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
 
     .description-text {
-      font-size: 14px;
+      font-size: 16px; /* Збільшено розмір */
       color: rgba(255, 255, 255, 0.7);
       text-align: center;
-      margin-bottom: 15px;
+      margin-bottom: 30px;
     }
 
     /* === Cards === */
@@ -141,29 +162,36 @@
       display: flex;
       justify-content: center;
       align-items: stretch;
-      flex-wrap: nowrap;
-      gap: 12px;
+      flex-wrap: wrap; /* Дозволити переносити елементи */
+      gap: 20px; /* Збільшено проміжок */
     }
     
     .card-row-container + .card-row-container {
-      margin-top: 12px;
+      margin-top: 20px;
     }
 
     .loan-card {
-      flex: 0 1 calc(50% - 6px);
+      flex: 0 1 calc(50% - 10px); /* За замовчуванням 2 картки на мобільних */
       background-color: var(--card-bg-dark);
       color: var(--card-text-light);
       border-radius: var(--card-border-radius);
-      padding: 20px 15px;
+      padding: 25px 20px; /* Збільшено внутрішній відступ */
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3), 
-                  0 0 0 2px rgba(255, 255, 255, 0.1); 
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4), 
+                  0 0 0 3px rgba(255, 255, 255, 0.05); 
       position: relative;
       overflow: hidden;
       z-index: 1;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .loan-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 25px rgba(0,0,0,0.5), 
+                    0 0 0 3px var(--color-accent-blue); 
     }
     
     .loan-card > * {
@@ -173,113 +201,121 @@
 
     /* === СТИЛІЗОВАНИЙ ЗАГОЛОВОК MFO === */
     .card-title-text {
-        font-size: 13px;
+        font-size: 15px; /* Збільшено розмір */
         font-weight: 700;
-        letter-spacing: 1px; 
+        letter-spacing: 1.5px; 
         text-transform: uppercase;
-        padding-top: 4px;
+        padding-top: 6px;
         color: var(--color-text-white);
-        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 
-                     0 0 10px rgba(70, 151, 255, 0.4); 
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.7), 
+                     0 0 15px rgba(70, 151, 255, 0.5); 
     }
 
     .card-header {
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 15px;
-      height: 32px; 
+      margin-bottom: 20px;
+      height: 36px; 
     }
 
     .rating-label {
-      font-size: 12px;
-      color: rgba(255, 255, 255, 0.6);
+      font-size: 13px; /* Збільшено розмір */
+      color: rgba(255, 255, 255, 0.7);
       font-weight: 600;
-      margin-bottom: 3px;
+      margin-bottom: 5px;
       text-transform: uppercase;
     }
 
     .rating-percent {
-      font-size: 26px;
+      font-size: 32px; /* Збільшено розмір */
       font-weight: 800;
       color: var(--card-accent-blue-dark);
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
 
     .loan-details {
       width: 100%;
-      margin-bottom: 15px;
+      max-width: 250px;
+      margin-bottom: 20px;
     }
 
     .detail-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 4px 0;
+      padding: 6px 0;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+    }
+    
+    .detail-item:last-child {
+        border-bottom: none;
     }
 
     .detail-label {
-      font-size: 13px;
+      font-size: 14px; /* Збільшено розмір */
       font-weight: 500;
     }
 
     .detail-value {
-      font-size: 14px;
+      font-size: 15px; /* Збільшено розмір */
       font-weight: 700;
       color: var(--card-accent-blue-dark);
     }
 
     .detail-value.low-percent {
-      font-size: 15px;
+      font-size: 18px; /* Збільшено розмір */
+      color: var(--color-green-gradient-start);
     }
 
     .learn-more-link {
-      font-size: 13px;
+      font-size: 14px; /* Збільшено розмір */
       font-weight: 600;
       color: var(--card-link-blue);
       text-decoration: none;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
       display: inline-flex;
       align-items: center;
     }
 
     .learn-more-link svg {
-      margin-left: 4px;
-      width: 12px;
-      height: 12px;
+      margin-left: 6px;
+      width: 14px; /* Збільшено розмір */
+      height: 14px; /* Збільшено розмір */
       fill: var(--card-link-blue);
     }
 
     .get-money-button {
       width: 100%;
-      max-width: 180px;
-      padding: 10px 15px;
+      max-width: 200px; /* Збільшено ширину */
+      padding: 12px 20px; /* Збільшено відступи */
       background-color: var(--card-button-yellow);
       color: #12171f;
       border: none;
-      border-radius: 8px;
-      font-size: 14px;
+      border-radius: 10px; /* Збільшено радіус */
+      font-size: 16px; /* Збільшено розмір */
       font-weight: 700;
       cursor: pointer;
-      transition: background-color 0.2s;
-      box-shadow: 0 3px 0 var(--card-button-hover);
+      transition: background-color 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 0 var(--card-button-hover);
     }
 
     .get-money-button:hover {
       background-color: var(--card-button-hover);
+      box-shadow: 0 2px 0 var(--card-button-hover);
+      transform: translateY(2px);
     }
     
     /* === СТИЛІ ДЛЯ СТІКЕРІВ "ТОП" === */
     .loan-card-badge {
-      position: absolute;
-      top: 10px; 
-      right: -25px; 
-      padding: 3px 25px;
-      font-size: 10px;
+      top: 15px; /* Збільшено відступ */
+      right: -30px; /* Збільшено відступ */
+      padding: 4px 30px; /* Збільшено відступи */
+      font-size: 11px; /* Збільшено розмір */
       font-weight: 800;
       text-transform: uppercase;
       transform: rotate(45deg); 
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
       z-index: 10;
     }
 
@@ -297,105 +333,111 @@
 
     /* === Стилі для детальної інформації === */
     .details-section-title {
-      font-size: 20px;
+      font-size: 24px; /* Збільшено розмір */
       font-weight: 700;
       color: var(--color-accent-blue);
       text-align: center;
-      margin-top: 40px;
-      margin-bottom: 25px;
+      margin-top: 60px; /* Збільшено відступ */
+      margin-bottom: 30px; /* Збільшено відступ */
       text-transform: uppercase;
     }
 
     .details-grid-container {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 15px;
-      padding-bottom: 40px;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); /* Збільшено minmax */
+      gap: 20px; /* Збільшено проміжок */
+      padding-bottom: 50px;
     }
 
     .details-card {
       background-color: var(--card-bg-dark);
       border-radius: var(--card-border-radius);
-      padding: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      padding: 25px; /* Збільшено відступ */
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+      transition: border-color 0.3s;
+    }
+    
+    .details-card:hover {
+        border-color: var(--color-green-gradient-start);
     }
 
     .details-card-title {
-      font-size: 18px;
+      font-size: 20px; /* Збільшено розмір */
       font-weight: 700;
       color: var(--color-green-gradient-start);
-      margin-bottom: 15px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 20px;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.15);
       padding-bottom: 10px;
     }
 
     .detail-info-item {
       display: flex;
       flex-direction: column;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     .detail-info-label {
-      font-size: 12px;
+      font-size: 13px; /* Збільшено розмір */
       font-weight: 500;
-      color: rgba(255, 255, 255, 0.6);
+      color: rgba(255, 255, 255, 0.7);
       text-transform: uppercase;
-      margin-bottom: 2px;
+      margin-bottom: 3px;
     }
 
     .detail-info-value {
-      font-size: 14px;
+      font-size: 15px; /* Збільшено розмір */
       font-weight: 600;
       color: var(--card-text-light);
       word-wrap: break-word;
     }
 
     .detail-info-value.red {
-        color: #ed2126; 
+        color: #ff4d4d; /* Змінено колір на більш яскравий червоний */
     }
     
     .detail-example {
-        margin-top: 15px;
-        padding: 10px;
-        background-color: rgba(70, 151, 255, 0.1);
-        border-left: 3px solid var(--color-accent-blue);
-        font-size: 13px;
+        margin-top: 20px;
+        padding: 15px;
+        background-color: rgba(70, 151, 255, 0.15);
+        border-left: 4px solid var(--color-accent-blue);
+        font-size: 14px;
+        border-radius: 8px;
     }
     
     /* === Стилі для футера (дисклеймера та контактів) === */
     .footer {
-      padding: 20px;
-      margin-top: 30px;
+      padding: 30px;
+      margin-top: 40px;
       background-color: var(--card-bg-dark); 
       border-radius: var(--card-border-radius);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
     }
 
     .footer-disclaimer {
-      font-size: 11px;
-      line-height: 1.6;
-      color: rgba(255, 255, 255, 0.5); 
-      margin-bottom: 20px;
+      font-size: 12px; /* Збільшено розмір */
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.6); 
+      margin-bottom: 25px;
       text-align: justify;
     }
 
     .footer-contacts {
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding-top: 15px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      padding-top: 20px;
     }
 
     .contacts-title {
-      font-size: 16px;
+      font-size: 18px; /* Збільшено розмір */
       font-weight: 700;
       color: var(--color-accent-blue);
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     .contacts-info {
-      font-size: 12px;
-      line-height: 1.8;
+      font-size: 13px; /* Збільшено розмір */
+      line-height: 1.9;
       color: var(--card-text-light);
     }
     
@@ -410,18 +452,18 @@
         text-decoration: underline;
     }
 
-    /* === Side Menu Styles === */
+    /* === Side Menu Styles (Оновлено для кращого десктопного вигляду) === */
     .side-menu {
       position: fixed;
       top: 0;
       right: 0;
       width: 100%;
-      max-width: 350px; 
+      max-width: 450px; /* Збільшено максимальну ширину */
       height: 100%;
       background-color: var(--card-bg-dark); 
-      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+      box-shadow: -8px 0 20px rgba(0, 0, 0, 0.7);
       transform: translateX(100%); 
-      transition: transform 0.3s ease-in-out;
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Додано більш плавний перехід */
       z-index: 1000;
       display: flex;
       flex-direction: column;
@@ -431,230 +473,152 @@
     .side-menu.open {
       transform: translateX(0); 
     }
-
+    
+    /* Зміна заголовка меню на десктопі */
     .menu-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
-      padding: 20px 20px 10px 20px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      position: sticky;
-      top: 0;
-      background-color: var(--card-bg-dark);
-      z-index: 1001;
+      padding: 25px 25px 15px 25px;
     }
-
+    
     .menu-title {
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--color-green-gradient-start);
+      font-size: 24px;
     }
-
+    
     .close-btn {
-      font-size: 30px;
-      color: var(--color-text-white);
-      background: none;
-      border: none;
-      cursor: pointer;
-      line-height: 1;
+      font-size: 36px;
     }
     
     /* Menu Navigation */
     .menu-nav {
-        padding: 0 20px;
-        margin-bottom: 20px;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
+        padding: 0 25px;
+        margin-bottom: 25px;
+        gap: 10px;
     }
     
     .menu-nav-btn {
-        background-color: rgba(70, 151, 255, 0.1);
-        color: var(--card-link-blue);
-        border: 1px solid var(--card-link-blue);
-        padding: 10px 15px;
-        border-radius: 8px;
-        font-size: 16px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: background-color 0.2s, color 0.2s, border-color 0.2s;
-        text-align: left;
-    }
-    
-    .menu-nav-btn:hover, .menu-nav-btn.active {
-        background-color: var(--card-link-blue);
-        color: var(--color-dark-bg);
-        font-weight: 700;
+        padding: 12px 20px;
+        font-size: 17px;
     }
     
     /* Menu Sections */
     .menu-section {
-        padding: 0 20px 20px 20px;
-        display: none;
-        flex-direction: column;
-        gap: 15px;
-        flex-grow: 1;
-    }
-    
-    .menu-section.active {
-        display: flex;
+        padding: 0 25px 30px 25px;
+        gap: 20px;
     }
 
     /* Review Styles */
-    .reviews-list {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
     .review-card {
       background-color: #263240; 
-      border-radius: 10px;
-      padding: 15px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    }
-
-    .review-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 8px;
+      border-radius: 12px;
+      padding: 18px;
     }
 
     .review-author {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--card-button-yellow);
-    }
-
-    .review-rating {
-      color: #ffc433; 
-      font-size: 14px;
-      letter-spacing: 1px;
+      font-size: 16px;
     }
 
     .review-text {
-      font-size: 13px;
-      line-height: 1.5;
-      color: var(--card-text-light);
-    }
-    
-    /* About Us Styles */
-    .about-us-content {
-        line-height: 1.6;
-        font-size: 14px;
-        color: var(--card-text-light);
-    }
-    
-    .about-us-content p {
-        margin-bottom: 15px;
-    }
-    
-    .about-us-content strong {
-        color: var(--color-green-gradient-start);
+      font-size: 14px;
     }
     
     /* Calculator Styles */
-    .calculator-form {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
-    
     .calc-input-group {
-        display: flex;
-        flex-direction: column;
+        gap: 10px;
     }
     
     .calc-label {
-        font-size: 14px;
-        font-weight: 600;
-        margin-bottom: 8px;
-        color: var(--color-text-white);
+        font-size: 15px;
     }
     
-    .calc-range-display {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 5px;
-        padding: 5px 0;
-        border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
-    }
-
     .calc-value-display {
-        font-size: 20px;
-        font-weight: 700;
-        color: var(--card-button-yellow);
-    }
-    
-    .calc-range {
-        width: 100%;
-        -webkit-appearance: none;
-        appearance: none;
-        height: 8px;
-        background: linear-gradient(to right, var(--color-accent-blue), var(--color-green-gradient-start));
-        border-radius: 4px;
-        cursor: pointer;
-        outline: none;
-    }
-    
-    .calc-range::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        appearance: none;
-        width: 20px;
-        height: 20px;
-        background: var(--card-button-yellow);
-        border: 3px solid var(--color-dark-bg);
-        border-radius: 50%;
-        cursor: pointer;
-        box-shadow: 0 0 5px rgba(0,0,0,0.5);
-    }
-    
-    .calc-range::-moz-range-thumb {
-        width: 20px;
-        height: 20px;
-        background: var(--card-button-yellow);
-        border: 3px solid var(--color-dark-bg);
-        border-radius: 50%;
-        cursor: pointer;
-        box-shadow: 0 0 5px rgba(0,0,0,0.5);
+        font-size: 24px;
     }
     
     .calc-results {
-        background-color: #263240;
-        padding: 15px;
-        border-radius: 10px;
-        margin-top: 10px;
-        border-left: 5px solid var(--color-green-gradient-start);
+        padding: 20px;
+        border-left: 6px solid var(--color-green-gradient-start);
     }
     
     .calc-result-item {
-        display: flex;
-        justify-content: space-between;
-        padding: 5px 0;
-        font-size: 14px;
+        padding: 6px 0;
+        font-size: 15px;
     }
     
     .calc-result-item strong {
-        color: var(--color-green-gradient-start);
-        font-size: 16px;
+        font-size: 17px;
     }
     
-    .calc-result-note {
-        font-size: 12px;
-        color: rgba(255, 255, 255, 0.5);
-        margin-top: 10px;
-    }
-
 
     /* Media Queries */
+    /* Mobile First: Styles above are for all devices and mobile. */
+    
+    @media (min-width: 1024px) {
+        
+        .header {
+             padding-bottom: 0;
+             margin-bottom: 40px;
+             border-bottom: none;
+        }
+        
+        /* Приховати мобільний гамбургер, показати десктопну кнопку */
+        #menuIcon {
+            display: none;
+        }
+        
+        .menu-icon-btn {
+            display: block;
+        }
+
+        .container {
+            padding: 0 30px;
+        }
+
+        /* 3 картки в ряд на широких екранах */
+        .loan-card {
+            flex: 0 1 calc(33.333% - 14px); /* (1200px - 4 * 20px gap) / 3 columns */
+            max-width: 380px;
+        }
+        
+        .card-row-container {
+             justify-content: space-between;
+             gap: 20px;
+        }
+        
+        /* 3 картки в ряд для останнього ряду */
+        .loan-card[style*="visibility: hidden"] {
+             flex: 0 1 calc(33.333% - 14px); 
+             visibility: hidden !important; 
+        }
+
+        .details-grid-container {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .details-grid-container {
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        }
+    }
+
     @media (max-width: 650px) {
+        .loan-card {
+            flex: 0 1 calc(100% - 10px); 
+            max-width: 100%;
+        }
+        
+        .card-row-container {
+             justify-content: center;
+        }
+        
+        .loan-card[style*="visibility: hidden"] {
+             display: none;
+        }
+        
         .details-grid-container {
             grid-template-columns: 1fr;
         }
     }
+    
     @media (max-width: 400px) {
         .side-menu {
             max-width: 100%; 
@@ -675,6 +639,7 @@
         </div>
         <div class="logo-text">СмартПозика</div>
       </div>
+      <button id="menuIconBtn" class="menu-icon-btn">Додатково</button>
       <div id="menuIcon" class="menu-icon">
         <span></span><span></span><span></span>
       </div>
@@ -686,7 +651,7 @@
         <h1 class="gradient-text">0,01%</h1>
       </div>
       <p class="sub-heading">на першу позику!</p>
-      <p class="description-text">Подавайте заявку та отримуйте свої персональні умови на першу позику!</p>
+      <p class="description-text">Подавайте заявку та отримуйте свої персональні умови на першу позику! Ми порівняли для вас найкращі пропозиції на ринку.</p>
 
       <div class="card-row-container">
         <div class="loan-card">
@@ -744,9 +709,38 @@
           </a>
           <button class="get-money-button" onclick="location.href='#'">Отримати гроші</button>
         </div>
+        
+        <div class="loan-card">
+          <div class="card-header">
+            <span class="card-title-text title-creditkasa">CreditKasa</span>
+          </div>
+          <div class="approval-rating">
+            <p class="rating-label">РЕЙТИНГ СХВАЛЕННЯ:</p>
+            <p class="rating-percent">97.7%</p>
+          </div>
+          <div class="loan-details">
+            <div class="detail-item">
+              <span class="detail-label">Сума до:</span>
+              <span class="detail-value">20 000 ₴</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Відсоток:</span>
+              <span class="detail-value low-percent">0.01%</span>
+            </div>
+          </div>
+          <a href="#" class="learn-more-link">
+            Дізнатися більше
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 15.5L8 11.5L9.41 10.09L12 12.67L14.59 10.09L16 11.5L12 15.5Z" fill="currentColor"/>
+            </svg>
+          </a>
+          <button class="get-money-button" onclick="location.href='#'">Отримати гроші</button>
+        </div>
+
       </div>
       
       <div class="card-row-container">
+        
         <div class="loan-card">
           <div class="card-header">
             <span class="card-title-text title-lehko">Lehko Credit</span>
@@ -800,9 +794,7 @@
           </a>
           <button class="get-money-button" onclick="location.href='#'">Отримати гроші</button>
         </div>
-      </div>
-      
-      <div class="card-row-container">
+
         <div class="loan-card">
           <div class="card-header">
             <span class="card-title-text title-selfie">Selfie credit</span>
@@ -830,6 +822,10 @@
           <button class="get-money-button" onclick="location.href='#'">Отримати гроші</button>
         </div>
 
+      </div>
+      
+      <div class="card-row-container">
+
         <div class="loan-card">
           <div class="card-header">
              <span class="card-title-text title-treba">Treba Credit</span>
@@ -856,36 +852,7 @@
           </a>
           <button class="get-money-button" onclick="location.href='#'">Отримати гроші</button>
         </div>
-      </div>
-      
-      <div class="card-row-container">
-        <div class="loan-card">
-          <div class="card-header">
-            <span class="card-title-text title-creditkasa">CreditKasa</span>
-          </div>
-          <div class="approval-rating">
-            <p class="rating-label">РЕЙТИНГ СХВАЛЕННЯ:</p>
-            <p class="rating-percent">97.7%</p>
-          </div>
-          <div class="loan-details">
-            <div class="detail-item">
-              <span class="detail-label">Сума до:</span>
-              <span class="detail-value">20 000 ₴</span>
-            </div>
-            <div class="detail-item">
-              <span class="detail-label">Відсоток:</span>
-              <span class="detail-value low-percent">0.01%</span>
-            </div>
-          </div>
-          <a href="#" class="learn-more-link">
-            Дізнатися більше
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 15.5L8 11.5L9.41 10.09L12 12.67L14.59 10.09L16 11.5L12 15.5Z" fill="currentColor"/>
-            </svg>
-          </a>
-          <button class="get-money-button" onclick="location.href='#'">Отримати гроші</button>
-        </div>
-
+        
         <div class="loan-card">
           <div class="card-header">
              <span class="card-title-text title-mycredit">MYCREDIT</span>
@@ -912,9 +879,7 @@
           </a>
           <button class="get-money-button" onclick="location.href='#'">Отримати гроші</button>
         </div>
-      </div>
-
-      <div class="card-row-container">
+        
         <div class="loan-card">
           <div class="card-header">
             <span class="card-title-text title-finbar">Pango</span>
@@ -942,6 +907,10 @@
           <button class="get-money-button" onclick="location.href='#'">Отримати гроші</button>
         </div>
 
+      </div>
+      
+      <div class="card-row-container">
+
         <div class="loan-card">
           <div class="card-header">
              <span class="card-title-text title-credit7">Credit7</span>
@@ -968,9 +937,7 @@
           </a>
           <button class="get-money-button" onclick="location.href='#'">Отримати гроші</button>
         </div>
-      </div>
-      
-      <div class="card-row-container">
+        
         <div class="loan-card">
           <div class="card-header">
             <span class="card-title-text title-tvojapozyka">Твоя Позика</span>
@@ -1024,6 +991,7 @@
           </a>
           <button class="get-money-button" onclick="location.href='#'">Отримати гроші</button>
         </div>
+
       </div>
       
       <div class="card-row-container">
@@ -1051,6 +1019,7 @@
           </a>
           <button class="get-money-button" onclick="location.href='#'">Отримати гроші</button>
         </div>
+        <div class="loan-card" style="visibility: hidden;"></div> 
         <div class="loan-card" style="visibility: hidden;"></div> 
       </div>
       </main>
@@ -1818,7 +1787,98 @@
             </div>
             <p class="review-text">CreditPlus. Я боялася великих відсотків, але 0,01% для новачків — це просто чудово! Повернула вчасно, без жодних проблем.</p>
           </div>
+          <div class="review-card">
+            <div class="review-header">
+              <span class="review-author">Жан С.</span>
+              <span class="review-rating">★★★★☆</span>
+            </div>
+            <p class="review-text">Credit7. Мені сподобалося, що вони не дзвонили моїм родичам і на роботу. Все конфіденційно, лише СМС і пошта.</p>
           </div>
+          <div class="review-card">
+            <div class="review-header">
+              <span class="review-author">Олеся Б.</span>
+              <span class="review-rating">★★★★★</span>
+            </div>
+            <p class="review-text">MyCredit. Все пройшло швидко і без зайвих питань. Зручно і зрозуміло. Рейтинг схвалення 98.1% — це про них!</p>
+          </div>
+          <div class="review-card">
+            <div class="review-header">
+              <span class="review-author">Ілля Х.</span>
+              <span class="review-rating">★★★★☆</span>
+            </div>
+            <p class="review-text">Lehko Credit. Відсоток, здається, трохи вищий, ніж у конкурентів, але я живу в маленькому місті, і це був єдиний, хто схвалив. Дякую.</p>
+          </div>
+          <div class="review-card">
+            <div class="review-header">
+              <span class="review-author">Христина С.</span>
+              <span class="review-rating">★★★★★</span>
+            </div>
+            <p class="review-text">Pango. Мені було важливо, що APR не такий космічний, як в деяких інших. Все детально розписано в договорі.</p>
+          </div>
+          <div class="review-card">
+            <div class="review-header">
+              <span class="review-author">Георгій Т.</span>
+              <span class="review-rating">★★★☆☆</span>
+            </div>
+            <p class="review-text">Starfin. Довелося зачекати верифікацію моєї картки, бо вона була не Приват. Загалом, процес не дуже швидкий, але результат є.</p>
+          </div>
+          <div class="review-card">
+            <div class="review-header">
+              <span class="review-author">Зоряна К.</span>
+              <span class="review-rating">★★★★★</span>
+            </div>
+            <p class="review-text">Tengo. Оформляла вперше, було страшно. Але все пройшло як по маслу. Через 5 днів повернула, заплатила копійки. Рекомендую!</p>
+          </div>
+          <div class="review-card">
+            <div class="review-header">
+              <span class="review-author">Денис М.</span>
+              <span class="review-rating">★★★★☆</span>
+            </div>
+            <p class="review-text">Miloan. Дали 30 000 ₴ з першого разу. Умови адекватні, якщо ти відповідальний. Гарний сервіс.</p>
+          </div>
+          <div class="review-card">
+            <div class="review-header">
+              <span class="review-author">Лілія Р.</span>
+              <span class="review-rating">★★★★★</span>
+            </div>
+            <p class="review-text">CreditKasa. Позичаю не вперше. Кожен раз все швидко, зрозуміло, і без зайвих дзвінків. Якісний сервіс.</p>
+          </div>
+          <div class="review-card">
+            <div class="review-header">
+              <span class="review-author">В'ячеслав П.</span>
+              <span class="review-rating">★★★☆☆</span>
+            </div>
+            <p class="review-text">Moneyveo. Завжди дають, але відсоток для повторного клієнта міг би бути і нижчим. Є над чим працювати.</p>
+          </div>
+          <div class="review-card">
+            <div class="review-header">
+              <span class="review-author">Оксана Б.</span>
+              <span class="review-rating">★★★★☆</span>
+            </div>
+            <p class="review-text">Treba Credit. Моєму чоловіку не схвалили, а мені дали. Мабуть, у мене кредитна історія краща. Все індивідуально, але мені допомогло.</p>
+          </div>
+          <div class="review-card">
+            <div class="review-header">
+              <span class="review-author">Кирило С.</span>
+              <span class="review-rating">★★★★★</span>
+            </div>
+            <p class="review-text">Selfie Credit — зручно, як ніде. Заповнив усе за 5 хвилин і вже користуєшся грошима. Навіть не віриться, що так швидко.</p>
+          </div>
+          <div class="review-card">
+            <div class="review-header">
+              <span class="review-author">Антон В.</span>
+              <span class="review-rating">★★★★☆</span>
+            </div>
+            <p class="review-text">Твоя Позика. Позичав для бізнесу. 150 000 ₴ — це серйозна сума для МФО. Заявку розглядали довше, але схвалили. Дякую.</p>
+          </div>
+          <div class="review-card">
+            <div class="review-header">
+              <span class="review-author">Ельвіра М.</span>
+              <span class="review-rating">★★★★★</span>
+            </div>
+            <p class="review-text">CreditPlus. Я боялася великих відсотків, але 0,01% для новачків — це просто чудово! Повернула вчасно, без жодних проблем.</p>
+          </div>
+        </div>
       </div>
 
       <div id="calculatorSection" class="menu-section">
@@ -1886,6 +1946,7 @@
     <script>
       
       const menuIcon = document.getElementById('menuIcon');
+      const menuIconBtn = document.getElementById('menuIconBtn'); 
       const sideMenu = document.getElementById('sideMenu');
       const closeMenuBtn = document.getElementById('closeMenuBtn');
       const body = document.body;
@@ -1923,7 +1984,7 @@
           
           if (sections[sectionName]) {
               sections[sectionName].classList.add('active');
-              menuTitle.textContent = button.textContent; // Зміна заголовка меню
+              menuTitle.textContent = button.textContent; 
           } else {
               menuTitle.textContent = 'Меню';
           }
@@ -1956,6 +2017,12 @@
       }
       
       
+      function getDaysWord(term) {
+          if (term === 1) return 'день';
+          if (term >= 2 && term <= 4) return 'дні';
+          return 'днів';
+      }
+      
       function updateCalculator() {
           const amount = parseInt(amountRange.value);
           const term = parseInt(termRange.value);
@@ -1965,16 +2032,17 @@
           const total = amount + interest;
           
           amountValueDisplay.textContent = amount.toLocaleString('uk-UA') + ' ₴';
-          termValueDisplay.textContent = term + ' ' + (term === 1 ? 'день' : (term >= 2 && term <= 4 ? 'дні' : 'днів'));
+          termValueDisplay.textContent = term + ' ' + getDaysWord(term);
           
           resultAmount.textContent = amount.toLocaleString('uk-UA') + ' ₴';
-          resultTerm.textContent = term + ' ' + (term === 1 ? 'день' : (term >= 2 && term <= 4 ? 'дні' : 'днів'));
+          resultTerm.textContent = term + ' ' + getDaysWord(term);
           resultInterest.textContent = interest.toFixed(2) + ' ₴';
-          resultTotal.textContent = total.toFixed(2).toLocaleString('uk-UA') + ' ₴';
+          resultTotal.textContent = total.toFixed(2).replace('.', ',').toLocaleString('uk-UA') + ' ₴';
       }
 
       
       menuIcon.addEventListener('click', openMenu);
+      menuIconBtn.addEventListener('click', openMenu); 
       closeMenuBtn.addEventListener('click', closeMenu);
 
       
@@ -1986,7 +2054,12 @@
       
       
       document.addEventListener('click', (event) => {
-        if (sideMenu.classList.contains('open') && !sideMenu.contains(event.target) && !menuIcon.contains(event.target)) {
+        
+        const isMenuOpen = sideMenu.classList.contains('open');
+        const isClickedOutsideMenu = !sideMenu.contains(event.target);
+        const isNotMenuIcon = !menuIcon.contains(event.target) && !menuIconBtn.contains(event.target);
+
+        if (isMenuOpen && isClickedOutsideMenu && isNotMenuIcon) {
           closeMenu();
         }
       });
