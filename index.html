@@ -146,6 +146,7 @@
       gap: 12px;
     }
     
+    /* НОВИЙ СТИЛЬ: Додає відступ між рядами карток */
     .card-row-container + .card-row-container {
       margin-top: 12px;
     }
@@ -160,11 +161,10 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-      position: relative; 
-      overflow: hidden; 
-      /* *** КЛЮЧЕВОЕ ИСПРАВЛЕНИЕ 1: Высокий z-index для карточки *** */
-      z-index: 100; 
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Stronger shadow for dark bg */
+      position: relative; /* For gradient border effect */
+      overflow: hidden; /* Important for containing pseudo-element */
+      z-index: 1; /* Ensure content is above pseudo-element */
     }
 
     /* Shimmering border effect */
@@ -191,18 +191,16 @@
     .loan-card::after {
       content: '';
       position: absolute;
-      /* *** КЛЮЧЕВОЕ ИСПРАВЛЕНИЕ 2: Более толстый "внутренний фон" для маскировки *** */
       top: 2px;
       left: 2px;
       right: 2px;
       bottom: 2px;
-      background-color: var(--card-bg-dark); /* Inner background to hide gradient and external content */
+      background-color: var(--card-bg-dark); /* Inner background to hide gradient */
       border-radius: calc(var(--card-border-radius) - 2px);
-      z-index: 0; /* Between gradient (-1) and content (2) */
+      z-index: 0; /* Between gradient and content */
     }
 
     .loan-card > * {
-      /* *** КЛЮЧЕВОЕ ИСПРАВЛЕНИЕ 3: Явно задаем position: relative для всех внутренних элементов *** */
       position: relative;
       z-index: 2; /* Bring content to front */
     }
@@ -219,8 +217,8 @@
       margin-bottom: 15px;
       font-size: 20px;
       font-weight: 700;
-      color: var(--card-text-light); 
-      height: 32px; 
+      color: var(--card-text-light); /* Ensure header text is light */
+      height: 32px; /* Встановлюємо фіксовану висоту для вирівнювання */
     }
 
     .card-logo-img {
@@ -237,27 +235,15 @@
       max-width: 130px; 
       object-fit: contain;
     }
-
-    .tengo-logo-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #0087a9; /* Blue background for Tengo */
-      border-radius: 5px;
-      padding: 0 5px;
-      height: 32px;
-    }
     
-    .tengo-logo-container .tengo-title {
-        color: white; 
-        font-size: 20px;
-        font-weight: 800;
-        letter-spacing: -1px;
-    }
+    /* Спеціальний стиль для логотипів з нестандартною висотою/шириною */
+    .logo-h32 img { height: 32px !important; }
+    .logo-h24 img { height: 24px !important; }
+
 
     .rating-label {
       font-size: 12px;
-      color: rgba(255, 255, 255, 0.6); 
+      color: rgba(255, 255, 255, 0.6); /* Lighter gray for dark bg */
       font-weight: 600;
       margin-bottom: 3px;
       text-transform: uppercase;
@@ -266,7 +252,7 @@
     .rating-percent {
       font-size: 26px;
       font-weight: 800;
-      color: var(--card-accent-blue-dark); 
+      color: var(--card-accent-blue-dark); /* Adjusted accent blue for dark bg */
       margin-bottom: 10px;
     }
 
@@ -290,7 +276,7 @@
     .detail-value {
       font-size: 14px;
       font-weight: 700;
-      color: var(--card-accent-blue-dark); 
+      color: var(--card-accent-blue-dark); /* Adjusted accent blue for dark bg */
     }
 
     .detail-value.low-percent {
@@ -319,7 +305,7 @@
       max-width: 180px;
       padding: 10px 15px;
       background-color: var(--card-button-yellow);
-      color: #12171f; 
+      color: #12171f; /* Темний текст для жовтої кнопки */
       border: none;
       border-radius: 8px;
       font-size: 14px;
@@ -332,17 +318,12 @@
     .get-money-button:hover {
       background-color: var(--card-button-hover);
     }
-    
-    /* *** КЛЮЧЕВОЕ ИСПРАВЛЕНИЕ 4: Адаптивность для мобильных устройств *** */
-    @media (max-width: 600px) {
-      .card-row-container {
-        flex-direction: column; /* Stacks cards vertically on small screens */
-        gap: 15px; /* Add more space between stacked cards */
-      }
-      .loan-card {
-        flex: 0 0 100%; /* Full width for stacked cards */
-      }
+    /* Specific styles for tengo logo text color */
+    .loan-card .card-header .tengo-title {
+        color: #ed2126; /* Original red for tengo, keep it for brand recognition */
     }
+
+    /* !!! REMOVED @media (max-width: 600px) block to keep cards side-by-side !!! */
   </style>
 </head>
 <body>
@@ -401,8 +382,9 @@
         </div>
 
         <div class="loan-card">
-          <div class="card-header tengo-logo-container">
-            <span class="tengo-title">Tengo</span>
+          <div class="card-header">
+            <span class="card-title tengo-title">Tengo</span>
+            <img src="https://mixfin-com.b-cdn.net/ua/wp-content/uploads/2025/01/tengo-mfo.svg" alt="Tengo Logo" class="card-logo-img" style="margin-left: 5px;">
           </div>
           <div class="approval-rating">
             <p class="rating-label">РЕЙТИНГ СХВАЛЕННЯ:</p>
@@ -457,8 +439,8 @@
         </div>
 
         <div class="loan-card">
-          <div class="card-header card-header-logo-only">
-             <img src="https://mixfin-com.b-cdn.net/ua/wp-content/uploads/2025/01/starfin-mfo.svg" alt="Starfin Logo" style="height: 32px;">
+          <div class="card-header card-header-logo-only logo-h32">
+             <img src="https://mixfin-com.b-cdn.net/ua/wp-content/uploads/2025/01/starfin-mfo.svg" alt="Starfin Logo">
           </div>
           <div class="approval-rating">
             <p class="rating-label">РЕЙТИНГ СХВАЛЕННЯ:</p>
@@ -513,8 +495,8 @@
         </div>
 
         <div class="loan-card">
-          <div class="card-header card-header-logo-only">
-             <img src="https://cdn.sanity.io/images/5iku71pb/production/316edde7a011353c3eb32119cd6f6b9d82e7afeb-989x366.jpg" alt="Treba. Credit Logo" style="height: 24px;">
+          <div class="card-header card-header-logo-only logo-h24">
+             <img src="https://cdn.sanity.io/images/5iku71pb/production/316edde7a011353c3eb32119cd6f6b9d82e7afeb-989x366.jpg" alt="Treba. Credit Logo">
           </div>
           <div class="approval-rating">
             <p class="rating-label">РЕЙТИНГ СХВАЛЕННЯ:</p>
@@ -598,8 +580,8 @@
 
       <div class="card-row-container">
         <div class="loan-card">
-          <div class="card-header card-header-logo-only">
-            <img src="https://compania.com.ua/uploads/company/F4VnBxT7UYyLfN9p0KT6XaDUuhlZmw7snnoc7Ois.png" alt="FinBar Logo" style="height: 32px;">
+          <div class="card-header card-header-logo-only logo-h32">
+            <img src="https://compania.com.ua/uploads/company/F4VnBxT7UYyLfN9p0KT6XaDUuhlZmw7snnoc7Ois.png" alt="FinBar Logo">
           </div>
           <div class="approval-rating">
             <p class="rating-label">РЕЙТИНГ СХВАЛЕННЯ:</p>
@@ -612,7 +594,7 @@
             </div>
             <div class="detail-item">
               <span class="detail-label">Відсоток:</span>
-              <span class="detail-value low-percent">0.01%</span
+              <span class="detail-value low-percent">0.01%</span>
             </div>
           </div>
           <a href="#" class="learn-more-link">
@@ -625,8 +607,8 @@
         </div>
 
         <div class="loan-card">
-          <div class="card-header card-header-logo-only">
-             <img src="https://mixfin-com.b-cdn.net/ua/wp-content/uploads/2025/01/credit7-mfo.svg" alt="Credit7 Logo" style="height: 32px;">
+          <div class="card-header card-header-logo-only logo-h32">
+             <img src="https://mixfin-com.b-cdn.net/ua/wp-content/uploads/2025/01/credit7-mfo.svg" alt="Credit7 Logo">
           </div>
           <div class="approval-rating">
             <p class="rating-label">РЕЙТИНГ СХВАЛЕННЯ:</p>
@@ -654,8 +636,8 @@
       
       <div class="card-row-container">
         <div class="loan-card">
-          <div class="card-header card-header-logo-only">
-            <img src="https://mixfin-com.b-cdn.net/ua/wp-content/uploads/2025/01/tvoja-pozyka-mfo.svg" alt="Tvoja Pozyka Logo" style="height: 32px;">
+          <div class="card-header card-header-logo-only logo-h32">
+            <img src="https://mixfin-com.b-cdn.net/ua/wp-content/uploads/2025/01/tvoja-pozyka-mfo.svg" alt="Tvoja Pozyka Logo">
           </div>
           <div class="approval-rating">
             <p class="rating-label">РЕЙТИНГ СХВАЛЕННЯ:</p>
@@ -681,8 +663,8 @@
         </div>
 
         <div class="loan-card">
-          <div class="card-header card-header-logo-only">
-             <img src="https://ksgbank.com.ua/image/catalog/tovarbaner/moneyveo11.jpg" alt="Moneyveo Logo" style="height: 32px;">
+          <div class="card-header card-header-logo-only logo-h32">
+             <img src="https://ksgbank.com.ua/image/catalog/tovarbaner/moneyveo11.jpg" alt="Moneyveo Logo">
           </div>
           <div class="approval-rating">
             <p class="rating-label">РЕЙТИНГ СХВАЛЕННЯ:</p>
