@@ -1884,7 +1884,7 @@
     </div>
 
     <script>
-      // Отримуємо елементи DOM
+      
       const menuIcon = document.getElementById('menuIcon');
       const sideMenu = document.getElementById('sideMenu');
       const closeMenuBtn = document.getElementById('closeMenuBtn');
@@ -1897,7 +1897,7 @@
           about: document.getElementById('aboutSection')
       };
       
-      // Елементи калькулятора
+      
       const amountRange = document.getElementById('loanAmountRange');
       const termRange = document.getElementById('loanTermRange');
       const amountValueDisplay = document.getElementById('amountValue');
@@ -1907,20 +1907,20 @@
       const resultInterest = document.getElementById('resultInterest');
       const resultTotal = document.getElementById('resultTotal');
 
-      // Функція для перемикання секцій
+      
       function switchSection(sectionName, button) {
-          // Оновлення активних кнопок
+          
           document.querySelectorAll('.menu-nav-btn').forEach(btn => {
               btn.classList.remove('active');
           });
           button.classList.add('active');
 
-          // Приховування всіх секцій
+          
           Object.values(sections).forEach(section => {
               section.classList.remove('active');
           });
 
-          // Відображення потрібної секції
+          
           if (sections[sectionName]) {
               sections[sectionName].classList.add('active');
               menuTitle.textContent = button.textContent; // Зміна заголовка меню
@@ -1929,7 +1929,7 @@
           }
       }
       
-      // Обробник кліків навігації меню
+      
       menuNav.addEventListener('click', (event) => {
           if (event.target.classList.contains('menu-nav-btn')) {
               const sectionName = event.target.getAttribute('data-section');
@@ -1937,25 +1937,25 @@
           }
       });
 
-      // Функція для відкриття меню
+      
       function openMenu() {
         sideMenu.classList.add('open');
         body.style.overflow = 'hidden'; 
         
-        // Встановлюємо початковий заголовок
+        
         const activeButton = document.querySelector('.menu-nav-btn.active');
         if (activeButton) {
              menuTitle.textContent = activeButton.textContent;
         }
       }
 
-      // Функція для закриття меню
+      
       function closeMenu() {
         sideMenu.classList.remove('open');
         body.style.overflow = ''; 
       }
       
-      // Функція для оновлення калькулятора
+      
       function updateCalculator() {
           const amount = parseInt(amountRange.value);
           const term = parseInt(termRange.value);
@@ -1973,25 +1973,25 @@
           resultTotal.textContent = total.toFixed(2).toLocaleString('uk-UA') + ' ₴';
       }
 
-      // Додаємо обробники подій
+      
       menuIcon.addEventListener('click', openMenu);
       closeMenuBtn.addEventListener('click', closeMenu);
 
-      // Обробники подій для калькулятора
+      
       amountRange.addEventListener('input', updateCalculator);
       termRange.addEventListener('input', updateCalculator);
       
-      // Ініціалізація калькулятора при завантаженні
+      
       updateCalculator(); 
       
-      // Додатково: Закриття меню при кліку поза ним
+      
       document.addEventListener('click', (event) => {
         if (sideMenu.classList.contains('open') && !sideMenu.contains(event.target) && !menuIcon.contains(event.target)) {
           closeMenu();
         }
       });
       
-      // Запобігання закриттю меню при кліку всередині
+      
       sideMenu.addEventListener('click', (event) => {
           event.stopPropagation();
       });
