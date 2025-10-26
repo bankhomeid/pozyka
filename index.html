@@ -190,15 +190,6 @@
         z-index: 2; /* Залишаємо z-index для порядку */
     }
 
-    /* Стилі для заголовка */
-    .card-header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 15px;
-      height: 32px; /* Фіксована висота */
-    }
-
     /* === СТИЛІЗОВАНИЙ ЗАГОЛОВОК MFO === */
     .card-title-text {
         /* Зменшення шрифту на ~30% (18px -> 13px) */
@@ -221,6 +212,14 @@
         color: var(--color-text-white); /* Перевизначення, щоб гарантувати білий */
     }
 
+    /* Стилі для заголовка */
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 15px;
+      height: 32px; /* Фіксована висота */
+    }
 
     .rating-label {
       font-size: 12px;
@@ -299,6 +298,34 @@
     .get-money-button:hover {
       background-color: var(--card-button-hover);
     }
+    
+    /* === НОВІ СТИЛІ ДЛЯ СТІКЕРІВ "ТОП" === */
+    .loan-card-badge {
+      position: absolute;
+      top: 10px; /* Відступ зверху */
+      right: -25px; /* Виходить за межі, щоб створити ефект кута */
+      padding: 3px 25px;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      transform: rotate(45deg); /* Поворот на 45 градусів */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      z-index: 10;
+    }
+
+    /* Золотий стікер для Miloan */
+    .badge-gold {
+      background-color: #ffcc00; /* Золотистий фон */
+      color: #12171f; /* Темний текст */
+      border: 1px solid #e6b800; /* Темно-золота рамка */
+    }
+
+    /* Червоний стікер для Tengo */
+    .badge-red {
+      background-color: #ed2126; /* Червоний фон */
+      color: var(--color-text-white); /* Білий текст */
+      border: 1px solid #cc0000; /* Темно-червона рамка */
+    }
   </style>
 </head>
 <body>
@@ -329,6 +356,7 @@
 
       <div class="card-row-container">
         <div class="loan-card">
+          <span class="loan-card-badge badge-gold">ТОП</span>
           <div class="card-header">
             <span class="card-title-text title-miloan">MILOAN</span>
           </div>
@@ -356,6 +384,7 @@
         </div>
 
         <div class="loan-card">
+          <span class="loan-card-badge badge-red">ТОП</span>
           <div class="card-header">
             <span class="card-title-text title-tengo">Tengo</span>
           </div>
