@@ -13,13 +13,28 @@
       --color-green-gradient-start: #00FFC2;
       --color-green-gradient-end: #008080;
       --font-primary: 'Work Sans', sans-serif;
-      --card-bg-dark: #1a222c;
+
+      /* New card colors for dark theme */
+      --card-bg-dark: #1a222c; /* Slightly lighter than main bg */
       --card-text-light: #e0e0e0;
-      --card-accent-blue-dark: #5cb3ff;
+      --card-accent-blue-dark: #5cb3ff; /* Adjusted for dark bg */
       --card-button-yellow: #ffc433;
       --card-button-hover: #e6b02e;
       --card-link-blue: #4697ff;
       --card-border-radius: 16px;
+      
+      /* Original specific company colors (no longer used for title text color) */
+      --color-tengo-red: #ed2126;
+      --color-lehko-blue: #3498db;
+      --color-starfin-gold: #f39c12;
+      --color-selfie-purple: #9b59b6;
+      --color-treba-green: #2ecc71;
+      --color-creditkasa-orange: #e67e22;
+      --color-mycredit-teal: #1abc9c;
+      --color-finbar-darkblue: #2c3e50;
+      --color-credit7-green: #27ae60;
+      --color-tvojapozyka-pink: #e91e63;
+      --color-moneyveo-green: #8bc34a;
     }
 
     * {
@@ -135,6 +150,7 @@
       margin-bottom: 15px;
     }
 
+    /* === Cards === */
     .card-row-container {
       display: flex;
       justify-content: center;
@@ -142,7 +158,7 @@
       flex-wrap: nowrap;
       gap: 12px;
     }
-
+    
     .card-row-container + .card-row-container {
       margin-top: 12px;
     }
@@ -155,82 +171,56 @@
       padding: 20px 15px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      align-items: center;
       text-align: center;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      /* Змінений тінь для відсутності градієнта */
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3), 
+                  0 0 0 2px rgba(255, 255, 255, 0.1); /* Додав тонку світлу обведення */
       position: relative;
       overflow: hidden;
-      min-height: 300px; /* Fixed minimum height to prevent button misalignment */
+      z-index: 1;
     }
-
-    .loan-card::before {
-      content: '';
-      position: absolute;
-      top: -100%;
-      left: -100%;
-      width: 300%;
-      height: 300%;
-      background: conic-gradient(from 0deg, transparent 0%, transparent 30%, var(--color-green-gradient-start) 50%, var(--color-accent-blue) 70%, transparent 100%);
-      animation: rotate-gradient 4s linear infinite;
-      z-index: -1;
-      border-radius: var(--card-border-radius);
+    
+    /* ВИДАЛЕННЯ: Ефект свічення видалено (::before та ::after) */
+    .loan-card::before, .loan-card::after {
+        content: none;
     }
-
-    .loan-card::after {
-      content: '';
-      position: absolute;
-      top: 2px;
-      left: 2px;
-      right: 2px;
-      bottom: 2px;
-      background-color: var(--card-bg-dark);
-      border-radius: calc(var(--card-border-radius) - 2px);
-      z-index: 0;
-    }
-
     .loan-card > * {
-      position: relative;
-      z-index: 2;
+        position: relative;
+        z-index: 2; /* Залишаємо z-index для порядку */
     }
 
-    @keyframes rotate-gradient {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
+    /* Стилі для заголовка */
     .card-header {
       display: flex;
       align-items: center;
       justify-content: center;
       margin-bottom: 15px;
-      font-size: 20px;
-      font-weight: 700;
-      height: 32px;
+      height: 32px; /* Фіксована висота */
     }
 
-    .card-logo-img {
-      width: 32px;
-      height: 32px;
-      margin-right: 6px;
-      object-fit: contain;
+    /* === СТИЛІЗОВАНИЙ ЗАГОЛОВОК MFO === */
+    .card-title-text {
+        /* Зменшення шрифту на ~30% (18px -> 13px) */
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 1px; /* Збільшив, щоб компенсувати менший розмір */
+        text-transform: uppercase;
+        padding-top: 4px;
+        /* Колір шрифту - білий */
+        color: var(--color-text-white);
+        /* Ефект "переливання" - додаємо тінь-світіння */
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 
+                     0 0 10px rgba(70, 151, 255, 0.4); 
     }
 
-    .card-header-logo-only img {
-      height: 28px;
-      width: auto;
-      max-width: 130px;
-      object-fit: contain;
+    /* ВИДАЛЕННЯ: Специфічні кольори для назв видалені, оскільки використовується білий */
+    .title-miloan, .title-tengo, .title-lehko, .title-starfin, 
+    .title-selfie, .title-treba, .title-creditkasa, .title-mycredit, 
+    .title-finbar, .title-credit7, .title-tvojapozyka, .title-moneyveo { 
+        color: var(--color-text-white); /* Перевизначення, щоб гарантувати білий */
     }
 
-    .logo-h32 img { height: 32px !important; }
-    .logo-h24 img { height: 24px !important; }
-
-    .mfo-title {
-      font-family: var(--font-primary);
-      font-size: 20px;
-      font-weight: 700;
-      color: #ed2126; /* Red color matching Tengo */
-    }
 
     .rating-label {
       font-size: 12px;
@@ -304,10 +294,6 @@
       cursor: pointer;
       transition: background-color 0.2s;
       box-shadow: 0 3px 0 var(--card-button-hover);
-      height: 40px; /* Fixed height for consistency */
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
     .get-money-button:hover {
@@ -344,8 +330,7 @@
       <div class="card-row-container">
         <div class="loan-card">
           <div class="card-header">
-            <img src="https://mixfin-com.b-cdn.net/ua/wp-content/uploads/2025/01/miloan.svg" alt="Miloan Logo" class="card-logo-img">
-            <span class="mfo-title">MILOAN</span>
+            <span class="card-title-text title-miloan">MILOAN</span>
           </div>
           <div class="approval-rating">
             <p class="rating-label">РЕЙТИНГ СХВАЛЕННЯ:</p>
@@ -372,8 +357,7 @@
 
         <div class="loan-card">
           <div class="card-header">
-            <span class="mfo-title tengo-title">Tengo</span>
-            <img src="https://mixfin-com.b-cdn.net/ua/wp-content/uploads/2025/01/tengo-mfo.svg" alt="Tengo Logo" class="card-logo-img" style="margin-left: 5px;">
+            <span class="card-title-text title-tengo">Tengo</span>
           </div>
           <div class="approval-rating">
             <p class="rating-label">РЕЙТИНГ СХВАЛЕННЯ:</p>
@@ -386,7 +370,7 @@
             </div>
             <div class="detail-item">
               <span class="detail-label">Відсоток:</span>
-              <span class="detail-value low-percent">0.01%</span>
+              <span class="detail-value low-percent">0.01%</p>
             </div>
           </div>
           <a href="#" class="learn-more-link">
@@ -398,12 +382,11 @@
           <button class="get-money-button" onclick="location.href='#'">Отримати гроші</button>
         </div>
       </div>
-
+      
       <div class="card-row-container">
         <div class="loan-card">
-          <div class="card-header card-header-logo-only">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJWgTAakHtcyg7AZpmcpCNOUBs5DXJnwGUQYRolCJe7KiCTO6D-b5H9dYT&s=10" alt="Lehko.credit Logo">
-            <span class="mfo-title">LEHKO.CREDIT</span>
+          <div class="card-header">
+            <span class="card-title-text title-lehko">Lehko.credit</span>
           </div>
           <div class="approval-rating">
             <p class="rating-label">РЕЙТИНГ СХВАЛЕННЯ:</p>
@@ -429,9 +412,8 @@
         </div>
 
         <div class="loan-card">
-          <div class="card-header card-header-logo-only logo-h32">
-            <img src="https://mixfin-com.b-cdn.net/ua/wp-content/uploads/2025/01/starfin-mfo.svg" alt="Starfin Logo">
-            <span class="mfo-title">STARFIN</span>
+          <div class="card-header">
+             <span class="card-title-text title-starfin">Starfin</span>
           </div>
           <div class="approval-rating">
             <p class="rating-label">РЕЙТИНГ СХВАЛЕННЯ:</p>
@@ -456,12 +438,11 @@
           <button class="get-money-button" onclick="location.href='#'">Отримати гроші</button>
         </div>
       </div>
-
+      
       <div class="card-row-container">
         <div class="loan-card">
-          <div class="card-header card-header-logo-only">
-            <img src="https://mixfin-com.b-cdn.net/ua/wp-content/uploads/2025/01/selfiecredit-mfo.svg" alt="Selfie credit Logo">
-            <span class="mfo-title">SELFIE CREDIT</span>
+          <div class="card-header">
+            <span class="card-title-text title-selfie">Selfie credit</span>
           </div>
           <div class="approval-rating">
             <p class="rating-label">РЕЙТИНГ СХВАЛЕННЯ:</p>
@@ -487,9 +468,8 @@
         </div>
 
         <div class="loan-card">
-          <div class="card-header card-header-logo-only logo-h24">
-            <img src="https://cdn.sanity.io/images/5iku71pb/production/316edde7a011353c3eb32119cd6f6b9d82e7afeb-989x366.jpg" alt="Treba. Credit Logo">
-            <span class="mfo-title">TREBA.CREDIT</span>
+          <div class="card-header">
+             <span class="card-title-text title-treba">Treba. Credit</span>
           </div>
           <div class="approval-rating">
             <p class="rating-label">РЕЙТИНГ СХВАЛЕННЯ:</p>
@@ -514,14 +494,11 @@
           <button class="get-money-button" onclick="location.href='#'">Отримати гроші</button>
         </div>
       </div>
-
-      <!-- Add remaining cards similarly with <span class="mfo-title"> for consistency -->
-      <!-- Example for CreditKasa and MYCREDIT -->
+      
       <div class="card-row-container">
         <div class="loan-card">
-          <div class="card-header card-header-logo-only">
-            <img src="https://banker.ua/wp-content/uploads/2023/06/%D0%9A%D1%80%D0%B5%D0%B4%D0%B8%D1%82%D0%9A%D0%B0%D1%81%D0%B0-%D0%9B%D0%9E%D0%93%D0%9E.png" alt="CreditKasa Logo">
-            <span class="mfo-title">CREDITKASA</span>
+          <div class="card-header">
+            <span class="card-title-text title-creditkasa">CreditKasa</span>
           </div>
           <div class="approval-rating">
             <p class="rating-label">РЕЙТИНГ СХВАЛЕННЯ:</p>
@@ -547,9 +524,8 @@
         </div>
 
         <div class="loan-card">
-          <div class="card-header card-header-logo-only">
-            <img src="https://banker.ua/wp-content/uploads/2023/06/%D0%9C%D0%B0%D0%B9%D0%9A%D1%80%D0%B5%D0%B4%D0%B8%D1%82-%D0%9B%D0%BE%D0%B3%D0%BE.png" alt="MYCREDIT Logo">
-            <span class="mfo-title">MYCREDIT</span>
+          <div class="card-header">
+             <span class="card-title-text title-mycredit">MYCREDIT</span>
           </div>
           <div class="approval-rating">
             <p class="rating-label">РЕЙТИНГ СХВАЛЕННЯ:</p>
@@ -575,8 +551,118 @@
         </div>
       </div>
 
-      <!-- Add other cards (FinBar, Credit7, Tvoja Pozyka, Moneyveo) with similar structure -->
-    </main>
+      <div class="card-row-container">
+        <div class="loan-card">
+          <div class="card-header">
+            <span class="card-title-text title-finbar">FinBar</span>
+          </div>
+          <div class="approval-rating">
+            <p class="rating-label">РЕЙТИНГ СХВАЛЕННЯ:</p>
+            <p class="rating-percent">97.4%</p>
+          </div>
+          <div class="loan-details">
+            <div class="detail-item">
+              <span class="detail-label">Сума до:</span>
+              <span class="detail-value">30000 ₴</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Відсоток:</span>
+              <span class="detail-value low-percent">0.01%</span>
+            </div>
+          </div>
+          <a href="#" class="learn-more-link">
+            Дізнатися більше
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 15.5L8 11.5L9.41 10.09L12 12.67L14.59 10.09L16 11.5L12 15.5Z" fill="currentColor"/>
+            </svg>
+          </a>
+          <button class="get-money-button" onclick="location.href='#'">Отримати гроші</button>
+        </div>
+
+        <div class="loan-card">
+          <div class="card-header">
+             <span class="card-title-text title-credit7">Credit7</span>
+          </div>
+          <div class="approval-rating">
+            <p class="rating-label">РЕЙТИНГ СХВАЛЕННЯ:</p>
+            <p class="rating-percent">97.4%</p>
+          </div>
+          <div class="loan-details">
+            <div class="detail-item">
+              <span class="detail-label">Сума до:</span>
+              <span class="detail-value">30000 ₴</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Відсоток:</span>
+              <span class="detail-value low-percent">0.01%</span>
+            </div>
+          </div>
+          <a href="#" class="learn-more-link">
+            Дізнатися більше
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 15.5L8 11.5L9.41 10.09L12 12.67L14.59 10.09L16 11.5L12 15.5Z" fill="currentColor"/>
+            </svg>
+          </a>
+          <button class="get-money-button" onclick="location.href='#'">Отримати гроші</button>
+        </div>
+      </div>
+      
+      <div class="card-row-container">
+        <div class="loan-card">
+          <div class="card-header">
+            <span class="card-title-text title-tvojapozyka">Tvoja Pozyka</span>
+          </div>
+          <div class="approval-rating">
+            <p class="rating-label">РЕЙТИНГ СХВАЛЕННЯ:</p>
+            <p class="rating-percent">97.4%</p>
+          </div>
+          <div class="loan-details">
+            <div class="detail-item">
+              <span class="detail-label">Сума до:</span>
+              <span class="detail-value">30000 ₴</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Відсоток:</span>
+              <span class="detail-value low-percent">0.01%</span>
+            </div>
+          </div>
+          <a href="#" class="learn-more-link">
+            Дізнатися більше
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 15.5L8 11.5L9.41 10.09L12 12.67L14.59 10.09L16 11.5L12 15.5Z" fill="currentColor"/>
+            </svg>
+          </a>
+          <button class="get-money-button" onclick="location.href='#'">Отримати гроші</button>
+        </div>
+
+        <div class="loan-card">
+          <div class="card-header">
+             <span class="card-title-text title-moneyveo">Moneyveo</span>
+          </div>
+          <div class="approval-rating">
+            <p class="rating-label">РЕЙТИНГ СХВАЛЕННЯ:</p>
+            <p class="rating-percent">97.4%</p>
+          </div>
+          <div class="loan-details">
+            <div class="detail-item">
+              <span class="detail-label">Сума до:</span>
+              <span class="detail-value">30000 ₴</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Відсоток:</span>
+              <span class="detail-value low-percent">0.01%</span>
+            </div>
+          </div>
+          <a href="#" class="learn-more-link">
+            Дізнатися більше
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 15.5L8 11.5L9.41 10.09L12 12.67L14.59 10.09L16 11.5L12 15.5Z" fill="currentColor"/>
+            </svg>
+          </a>
+          <button class="get-money-button" onclick="location.href='#'">Отримати гроші</button>
+        </div>
+      </div>
+      </main>
   </div>
 </body>
 </html>
