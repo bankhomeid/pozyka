@@ -395,6 +395,54 @@
         font-size: 13px;
     }
     
+    /* === НОВІ СТИЛІ ДЛЯ ФУТЕРА (ДИСКЛЕЙМЕРА ТА КОНТАКТІВ) === */
+    .footer {
+      padding: 20px;
+      margin-top: 30px;
+      background-color: var(--card-bg-dark); /* Темний фон, як у карток */
+      border-radius: var(--card-border-radius);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    }
+
+    .footer-disclaimer {
+      font-size: 11px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.5); /* Світло-сірий для дисклеймера */
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+
+    .footer-contacts {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 15px;
+    }
+
+    .contacts-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-accent-blue);
+      margin-bottom: 8px;
+    }
+
+    .contacts-info {
+      font-size: 12px;
+      line-height: 1.8;
+      color: var(--card-text-light);
+    }
+    
+    .contacts-link {
+        color: var(--card-link-blue);
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+    
+    .contacts-link:hover {
+        color: var(--card-accent-blue-dark);
+        text-decoration: underline;
+    }
+
+    
     /* Додаємо Media Query для мобільної адаптації сітки */
     @media (max-width: 650px) {
         .details-grid-container {
@@ -1175,7 +1223,17 @@
 
         </div>
     </section>
-
-  </div>
+    
+    <footer class="footer">
+        <p class="footer-disclaimer">
+            Послуга з пошуку кредитних пропозицій "СмартПозика". Сайт не надає платних послуг кредитних продуктів для клієнтів, а саме пропонує клієнту список пропозицій кредитних установ, некредитних фінансових організацій, до яких клієнт може звернутися з метою оформлення заявки на кредитний продукт. Проект не є банком або кредитором, не належить до фінансових установ та не несе відповідальності за наслідки будь-яких укладених договорів кредитування або поруку перед ним. Мінімальна процентна ставка у деяких партнерів складає 0,01%. Щоб оформити заявку на одержання позички, необхідно заповнити анкету на сайті проекту. Здійснюючи будь-які дії на сайті, ви повинні надати свою згоду на обробку персональних даних та згоду на отримання рекламних матеріалів. Ви ознайомилися та згодні з Договором публічної оферти та Тарифами сервісу. Сервіс "СмартПозика" використовує куки для надання послуг. Умови зберігання або доступу до cookie Ви можете налаштувати у своєму браузері. Сервіс призначений для осіб віком від 18 років. Розрахунок у наданому на сайті калькуляторах базується на середньому показнику процентної ставки, яка буде запропонована фінансовими організаціями.
+        </p>
+        <div class="footer-contacts">
+            <p class="contacts-title">Контакти</p>
+            <p class="contacts-info">ТОВ "СмартПозика" , 04073 , місто Київ , проспект Степана Бандери , будинок 12</p>
+            <p class="contacts-info">Пошта: <a href="mailto:smartipozyka@gmail.com" class="contacts-link">smartipozyka@gmail.com</a></p>
+        </div>
+    </footer>
+    </div>
 </body>
 </html>
