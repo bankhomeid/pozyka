@@ -37,7 +37,7 @@
       display: flex;
       justify-content: center;
       align-items: flex-start;
-      min-height: 100vh;
+      min-height: 10vh; /* Знижено для прикладу */
       padding: 20px 0;
     }
 
@@ -164,7 +164,7 @@
       box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Stronger shadow for dark bg */
       position: relative; /* For gradient border effect */
       overflow: hidden; /* Important for containing pseudo-element */
-      z-index: 1; /* Ensure content is above pseudo-element */
+      z-index: 10; /* *** КЛЮЧЕВОЕ ИСПРАВЛЕНИЕ: Повышаем z-index, чтобы быть над фоновыми элементами *** */
     }
 
     /* Shimmering border effect */
@@ -234,6 +234,24 @@
       width: auto; 
       max-width: 130px; 
       object-fit: contain;
+    }
+
+    /* Specific styles for Tengo to match the look in the screenshot */
+    .tengo-logo-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #0087a9; /* Blue background */
+      border-radius: 5px;
+      padding: 0 5px;
+      height: 32px;
+    }
+    
+    .tengo-logo-container .tengo-title {
+        color: white; 
+        font-size: 20px;
+        font-weight: 800;
+        letter-spacing: -1px;
     }
 
 
@@ -314,12 +332,6 @@
     .get-money-button:hover {
       background-color: var(--card-button-hover);
     }
-    /* Specific styles for tengo logo text color */
-    .loan-card .card-header .tengo-title {
-        color: #ed2126; /* Original red for tengo, keep it for brand recognition */
-    }
-
-    /* !!! REMOVED @media (max-width: 600px) block to keep cards side-by-side !!! */
   </style>
 </head>
 <body>
@@ -378,9 +390,8 @@
         </div>
 
         <div class="loan-card">
-          <div class="card-header">
-            <span class="card-title tengo-title">Tengo</span>
-            <img src="https://mixfin-com.b-cdn.net/ua/wp-content/uploads/2025/01/tengo-mfo.svg" alt="Tengo Logo" class="card-logo-img" style="margin-left: 5px;">
+          <div class="card-header tengo-logo-container">
+            <span class="tengo-title">Tengo</span>
           </div>
           <div class="approval-rating">
             <p class="rating-label">РЕЙТИНГ СХВАЛЕННЯ:</p>
@@ -590,7 +601,7 @@
             </div>
             <div class="detail-item">
               <span class="detail-label">Відсоток:</span>
-              <span class="detail-value low-percent">0.01%</span>
+              <span class="detail-value low-percent">0.01%</span
             </div>
           </div>
           <a href="#" class="learn-more-link">
