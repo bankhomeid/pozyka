@@ -22,19 +22,6 @@
       --card-button-hover: #e6b02e;
       --card-link-blue: #4697ff;
       --card-border-radius: 16px;
-      
-      /* Original specific company colors (no longer used for title text color) */
-      --color-tengo-red: #ed2126;
-      --color-lehko-blue: #3498db;
-      --color-starfin-gold: #f39c12;
-      --color-selfie-purple: #9b59b6;
-      --color-treba-green: #2ecc71;
-      --color-creditkasa-orange: #e67e22;
-      --color-mycredit-teal: #1abc9c;
-      --color-finbar-darkblue: #2c3e50;
-      --color-credit7-green: #27ae60;
-      --color-tvojapozyka-pink: #e91e63;
-      --color-moneyveo-green: #8bc34a;
     }
 
     * {
@@ -173,52 +160,39 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      /* Змінений тінь для відсутності градієнта */
       box-shadow: 0 5px 15px rgba(0,0,0,0.3), 
-                  0 0 0 2px rgba(255, 255, 255, 0.1); /* Додав тонку світлу обведення */
+                  0 0 0 2px rgba(255, 255, 255, 0.1); 
       position: relative;
       overflow: hidden;
       z-index: 1;
     }
     
-    /* ВИДАЛЕННЯ: Ефект свічення видалено (::before та ::after) */
     .loan-card::before, .loan-card::after {
         content: none;
     }
     .loan-card > * {
         position: relative;
-        z-index: 2; /* Залишаємо z-index для порядку */
+        z-index: 2; 
     }
 
     /* === СТИЛІЗОВАНИЙ ЗАГОЛОВОК MFO === */
     .card-title-text {
-        /* Зменшення шрифту на ~30% (18px -> 13px) */
         font-size: 13px;
         font-weight: 700;
-        letter-spacing: 1px; /* Збільшив, щоб компенсувати менший розмір */
+        letter-spacing: 1px; 
         text-transform: uppercase;
         padding-top: 4px;
-        /* Колір шрифту - білий */
         color: var(--color-text-white);
-        /* Ефект "переливання" - додаємо тінь-світіння */
         text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 
                      0 0 10px rgba(70, 151, 255, 0.4); 
     }
 
-    /* ВИДАЛЕННЯ: Специфічні кольори для назв видалені, оскільки використовується білий */
-    .title-miloan, .title-tengo, .title-lehko, .title-starfin, 
-    .title-selfie, .title-treba, .title-creditkasa, .title-mycredit, 
-    .title-finbar, .title-credit7, .title-tvojapozyka, .title-moneyveo { 
-        color: var(--color-text-white); /* Перевизначення, щоб гарантувати білий */
-    }
-
-    /* Стилі для заголовка */
     .card-header {
       display: flex;
       align-items: center;
       justify-content: center;
       margin-bottom: 15px;
-      height: 32px; /* Фіксована висота */
+      height: 32px; 
     }
 
     .rating-label {
@@ -302,29 +276,27 @@
     /* === НОВІ СТИЛІ ДЛЯ СТІКЕРІВ "ТОП" === */
     .loan-card-badge {
       position: absolute;
-      top: 10px; /* Відступ зверху */
-      right: -25px; /* Виходить за межі, щоб створити ефект кута */
+      top: 10px; 
+      right: -25px; 
       padding: 3px 25px;
       font-size: 10px;
       font-weight: 800;
       text-transform: uppercase;
-      transform: rotate(45deg); /* Поворот на 45 градусів */
+      transform: rotate(45deg); 
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
       z-index: 10;
     }
 
-    /* Золотий стікер для Miloan */
     .badge-gold {
-      background-color: #ffcc00; /* Золотистий фон */
-      color: #12171f; /* Темний текст */
-      border: 1px solid #e6b800; /* Темно-золота рамка */
+      background-color: #ffcc00; 
+      color: #12171f; 
+      border: 1px solid #e6b800; 
     }
 
-    /* Червоний стікер для Tengo */
     .badge-red {
-      background-color: #ed2126; /* Червоний фон */
-      color: var(--color-text-white); /* Білий текст */
-      border: 1px solid #cc0000; /* Темно-червона рамка */
+      background-color: #ed2126; 
+      color: var(--color-text-white); 
+      border: 1px solid #cc0000; 
     }
 
     /* === Нові стилі для детальної інформації === */
@@ -384,7 +356,7 @@
     }
 
     .detail-info-value.red {
-        color: #ed2126; /* Для APR */
+        color: #ed2126; 
     }
     
     .detail-example {
@@ -399,7 +371,7 @@
     .footer {
       padding: 20px;
       margin-top: 30px;
-      background-color: var(--card-bg-dark); /* Темний фон, як у карток */
+      background-color: var(--card-bg-dark); 
       border-radius: var(--card-border-radius);
       border: 1px solid rgba(255, 255, 255, 0.05);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
@@ -408,7 +380,7 @@
     .footer-disclaimer {
       font-size: 11px;
       line-height: 1.6;
-      color: rgba(255, 255, 255, 0.5); /* Світло-сірий для дисклеймера */
+      color: rgba(255, 255, 255, 0.5); 
       margin-bottom: 20px;
       text-align: justify;
     }
@@ -442,11 +414,106 @@
         text-decoration: underline;
     }
 
+    /* === Side Menu & Reviews Styles (New) === */
+    .side-menu {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      max-width: 350px; /* Ширина меню */
+      height: 100%;
+      background-color: var(--card-bg-dark); /* Темний фон */
+      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+      transform: translateX(100%); /* Заховано праворуч */
+      transition: transform 0.3s ease-in-out;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    .side-menu.open {
+      transform: translateX(0); /* Відкрито */
+    }
+
+    .menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: sticky;
+      top: 0;
+      background-color: var(--card-bg-dark);
+      z-index: 1001;
+    }
+
+    .menu-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--color-green-gradient-start);
+    }
+
+    .close-btn {
+      font-size: 30px;
+      color: var(--color-text-white);
+      background: none;
+      border: none;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .reviews-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      padding-top: 10px;
+    }
+
+    .review-card {
+      background-color: #263240; /* Трохи темніший, ніж фон меню */
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .review-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+
+    .review-author {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--card-button-yellow);
+    }
+
+    .review-rating {
+      color: #ffc433; /* Жовті зірки */
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+
+    .review-text {
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--card-text-light);
+    }
+
     
     /* Додаємо Media Query для мобільної адаптації сітки */
     @media (max-width: 650px) {
         .details-grid-container {
             grid-template-columns: 1fr;
+        }
+    }
+    @media (max-width: 400px) {
+        .side-menu {
+            max-width: 100%; /* На маленьких екранах на всю ширину */
         }
     }
   </style>
@@ -464,7 +531,7 @@
         </div>
         <div class="logo-text">СмартПозика</div>
       </div>
-      <div class="menu-icon">
+      <div id="menuIcon" class="menu-icon">
         <span></span><span></span><span></span>
       </div>
     </header>
@@ -1235,5 +1302,409 @@
         </div>
     </footer>
     </div>
+
+    <div id="sideMenu" class="side-menu">
+      <div class="menu-header">
+        <h3 class="menu-title">Відгуки клієнтів (50)</h3>
+        <button id="closeMenuBtn" class="close-btn">&times;</button>
+      </div>
+      <div class="reviews-list">
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Марина С.</span>
+            <span class="review-rating">★★★★★</span>
+          </div>
+          <p class="review-text">Треба було терміново оплатити комуналку, а зарплата затримувалась. Взяла 5к у MyCredit на тиждень. Дуже швидко, без зайвих дзвінків. Головне - вчасно повернути, тоді 0.01% реально працює.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Олег К.</span>
+            <span class="review-rating">★★★★☆</span>
+          </div>
+          <p class="review-text">CreditKasa виручила. Пройшов реєстрацію за 15 хвилин. Єдиний мінус — наступні позики вже дорожчі, але це очікувано. Як "швидка допомога" — ідеально.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Ірина В.</span>
+            <span class="review-rating">★★★★★</span>
+          </div>
+          <p class="review-text">Порівняла через "СмартПозику" Miloan та Tengo. У Miloan кращий рейтинг, але Tengo дали більшу суму з першого разу. Оформила, гроші на картці були миттєво. Рекомендую!</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Тарас Л.</span>
+            <span class="review-rating">★★★☆☆</span>
+          </div>
+          <p class="review-text">Брав у Treba Credit, бо відмовили інші. Схвалення було, але під кінець терміну не зміг повернути. Пролонгація є, але це дорого. Це не для жартів, тільки у крайньому випадку.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Віталій Р.</span>
+            <span class="review-rating">★★★★★</span>
+          </div>
+          <p class="review-text">Moneyveo — перевірений варіант. Користуюсь не перший раз. Все прозоро, без прихованих комісій. Мобільний додаток дуже зручний для погашення.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Анна М.</span>
+            <span class="review-rating">★★★★☆</span>
+          </div>
+          <p class="review-text">Lehko Credit. Відсоток 0.09% не такий вже й "легкий", але схвалили навіть з невеликими простроченнями в минулому. Це був великий плюс для мене.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Сергій Г.</span>
+            <span class="review-rating">★★★★★</span>
+          </div>
+          <p class="review-text">Starfin дав 0.01% на першу позику. Це просто подарунок. Використав, повернув за 5 днів. Переплата мінімальна. Сервіс "СмартПозика" допоміг знайти цю пропозицію.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Катерина Ж.</span>
+            <span class="review-rating">★★★★☆</span>
+          </div>
+          <p class="review-text">Selfie Credit здивував сумою до 50 000 ₴. Щоправда, на 50к треба бути вже постійним клієнтом, але 15к отримала без проблем. Гарний функціонал на сайті.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Роман П.</span>
+            <span class="review-rating">★★☆☆☆</span>
+          </div>
+          <p class="review-text">"Твоя Позика" пропонує велику суму, але відсоток 1% — це дуже дорого. Краще брати менше і під 0.01% у Miloan чи CreditPlus, якщо є така можливість.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Світлана Д.</span>
+            <span class="review-rating">★★★★★</span>
+          </div>
+          <p class="review-text">Credit7. Перший кредит під 0.01% — це те, що треба! Оформлення зайняло 7 хвилин, реально! Схвалення 97.4% — напевно, це правда.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Дмитро Ф.</span>
+            <span class="review-rating">★★★★☆</span>
+          </div>
+          <p class="review-text">Брав у Pango, все чітко. Лише один раз зависла верифікація карти, але після перезавантаження сторінки все пройшло. Загалом — позитивний досвід.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Наталя З.</span>
+            <span class="review-rating">★★★★★</span>
+          </div>
+          <p class="review-text">Потрібні були гроші на ліки. CreditPlus швидко перерахував 8000 грн. Дякую за оперативність і дійсно низький відсоток для нових клієнтів.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Юрій Б.</span>
+            <span class="review-rating">★★★☆☆</span>
+          </div>
+          <p class="review-text">Заявку схвалили, але сума була меншою, ніж я просив. Це мінус. Але оскільки було терміново, погодився. Працював з Tengo.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Олена П.</span>
+            <span class="review-rating">★★★★★</span>
+          </div>
+          <p class="review-text">Я студентка, часто не вистачає до стипендії. Moneyveo рятує завжди. Завдяки "СмартПозика" знайшла їхню пропозицію серед перших.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Ганна І.</span>
+            <span class="review-rating">★★★★☆</span>
+          </div>
+          <p class="review-text">Lehko Credit — простий і зрозумілий інтерфейс. Трохи довго чекала на рішення, хвилин 20, але гроші прийшли без проблем.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Ігор Д.</span>
+            <span class="review-rating">★★★★★</span>
+          </div>
+          <p class="review-text">Miloan — ТОП за рейтингом схвалення. Моя кредитна історія не ідеальна, але вони дали зелене світло. Щиро вдячний.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Валентина Ф.</span>
+            <span class="review-rating">★★★★☆</span>
+          </div>
+          <p class="review-text">Starfin — швидкість на висоті. Дуже сподобалася автоматична система. Людей, здається, взагалі не залучають, що пришвидшує процес.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Максим А.</span>
+            <span class="review-rating">★★★☆☆</span>
+          </div>
+          <p class="review-text">Брав у CreditKasa. Через прострочення в минулому не дали максимальну суму. Але чесно попередили. Довелось брати менше.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Софія В.</span>
+            <span class="review-rating">★★★★★</span>
+          </div>
+          <p class="review-text">Selfie Credit. Оформляла з телефону, зробила селфі, отримала гроші. Це дійсно технологічно! Раджу.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Павло Л.</span>
+            <span class="review-rating">★★★★☆</span>
+          </div>
+          <p class="review-text">MyCredit. Все добре, але хотілося б більший термін для першої позики під 0.01%. Три місяці — це швидко пролітає.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Ніна Б.</span>
+            <span class="review-rating">★★★★★</span>
+          </div>
+          <p class="review-text">Pango. Дуже чемна служба підтримки, допомогли з розрахунком пролонгації. Важливо, що все прозоро, без прихованих платежів.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Андрій П.</span>
+            <span class="review-rating">★★★☆☆</span>
+          </div>
+          <p class="review-text">Treba Credit. Високий APR, про це треба пам'ятати. Але на короткий термін (до 10 днів) — це нормально. Все залежить від ваших потреб.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Жанна С.</span>
+            <span class="review-rating">★★★★★</span>
+          </div>
+          <p class="review-text">Твоя Позика. Завдяки високій сумі до 150 000 ₴ змогла покрити велику непередбачену витрату. Так, 1% на день, але це було єдиним виходом.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Олексій Р.</span>
+            <span class="review-rating">★★★★☆</span>
+          </div>
+          <p class="review-text">Tengo. Зручно, що можна оформити через Дію. Це суттєво пришвидшило процес. Респект за інновації.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Вікторія К.</span>
+            <span class="review-rating">★★★★★</span>
+          </div>
+          <p class="review-text">CreditPlus! 0,01% на перший раз — це бомба! Завжди користуватимусь цим сервісом для порівняння перед тим, як брати позику.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Руслан М.</span>
+            <span class="review-rating">★★★★☆</span>
+          </div>
+          <p class="review-text">Credit7 схвалив 20 000 ₴ одразу. Це було неочікувано, бо в інших давали 5-7 тисяч. Дуже задоволений. </p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Тетяна З.</span>
+            <span class="review-rating">★★★★★</span>
+          </div>
+          <p class="review-text">Користувалася послугами MyCredit, коли захворіла дитина. Оформлення онлайн, на картку Привату прийшли за 2 хвилини. Швидкодія на 10 з 10.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Вадим Г.</span>
+            <span class="review-rating">★★★☆☆</span>
+          </div>
+          <p class="review-text">Pango. Все добре, але повертати гроші треба з комісією, якщо платити через термінал. З картки без комісії, але я хотів готівкою.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Ксенія Л.</span>
+            <span class="review-rating">★★★★★</span>
+          </div>
+          <p class="review-text">Lehko Credit мене дійсно виручив. Добре, що є такі сервіси, які допомагають знайти, де краще. "СмартПозика" — молодець!</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Петро Д.</span>
+            <span class="review-rating">★★★★☆</span>
+          </div>
+          <p class="review-text">CreditKasa. Сподобалось, що навіть при моєму віці (60+) схвалили позику. Це рідкість для МФО. Пенсіонерам теж треба допомагати.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Аліна Ф.</span>
+            <span class="review-rating">★★★★★</span>
+          </div>
+          <p class="review-text">Starfin. Я була вражена їхньою швидкістю. Поки я заповнювала анкету, вже отримала підтвердження. Ніяких проблем з виплатою.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Ярослав С.</span>
+            <span class="review-rating">★★★☆☆</span>
+          </div>
+          <p class="review-text">Tengo. Брав, коли був в АТО. Потрібні були гроші на ремонт машини. Схвалення було, але попросили додаткові документи. Трохи затягнулось.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Дарина З.</span>
+            <span class="review-rating">★★★★★</span>
+          </div>
+          <p class="review-text">Miloan. Найкращий досвід серед усіх МФО. Все прозоро, відсоток для новачків дійсно мінімальний. Справедлива оцінка: 5 зірок.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Богдан Р.</span>
+            <span class="review-rating">★★★★☆</span>
+          </div>
+          <p class="review-text">Treba Credit. Нормальний сервіс, але треба бути уважним з термінами. Пролонгація — це пастка для тих, хто не розрахував сили.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Марія К.</span>
+            <span class="review-rating">★★★★★</span>
+          </div>
+          <p class="review-text">Moneyveo. Завжди надійні. Останній раз позичала на ремонт ноутбука. Приємно, що для постійних клієнтів є спеціальні пропозиції.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Федір Л.</span>
+            <span class="review-rating">★★☆☆☆</span>
+          </div>
+          <p class="review-text">CreditPlus. На першу позику все чудово, але коли брав вдруге, відсоток здався захмарним. Треба читати договір, а не гнатися за "0.01%".</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Надія П.</span>
+            <span class="review-rating">★★★★☆</span>
+          </div>
+          <p class="review-text">Самозайнята особа. Selfie Credit схвалив 25к без офіційного працевлаштування. Дуже допомогло, коли чекала оплату від клієнта.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Едуард В.</span>
+            <span class="review-rating">★★★★★</span>
+          </div>
+          <p class="review-text">Твоя Позика. Нарешті знайшов МФО, яка дає велику суму. Так, не 0.01%, але для великих цілей це єдиний вихід. Задоволений.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Жан С.</span>
+            <span class="review-rating">★★★★☆</span>
+          </div>
+          <p class="review-text">Credit7. Мені сподобалося, що вони не дзвонили моїм родичам і на роботу. Все конфіденційно, лише СМС і пошта.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Олеся Б.</span>
+            <span class="review-rating">★★★★★</span>
+          </div>
+          <p class="review-text">MyCredit. Все пройшло швидко і без зайвих питань. Зручно і зрозуміло. Рейтинг схвалення 98.1% — це про них!</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Ілля Х.</span>
+            <span class="review-rating">★★★★☆</span>
+          </div>
+          <p class="review-text">Lehko Credit. Відсоток, здається, трохи вищий, ніж у конкурентів, але я живу в маленькому місті, і це був єдиний, хто схвалив. Дякую.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Христина С.</span>
+            <span class="review-rating">★★★★★</span>
+          </div>
+          <p class="review-text">Pango. Мені було важливо, що APR не такий космічний, як в деяких інших. Все детально розписано в договорі.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Георгій Т.</span>
+            <span class="review-rating">★★★☆☆</span>
+          </div>
+          <p class="review-text">Starfin. Довелося зачекати верифікацію моєї картки, бо вона була не Приват. Загалом, процес не дуже швидкий, але результат є.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Зоряна К.</span>
+            <span class="review-rating">★★★★★</span>
+          </div>
+          <p class="review-text">Tengo. Оформляла вперше, було страшно. Але все пройшло як по маслу. Через 5 днів повернула, заплатила копійки. Рекомендую!</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Денис М.</span>
+            <span class="review-rating">★★★★☆</span>
+          </div>
+          <p class="review-text">Miloan. Дали 30 000 ₴ з першого разу. Умови адекватні, якщо ти відповідальний. Гарний сервіс.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Лілія Р.</span>
+            <span class="review-rating">★★★★★</span>
+          </div>
+          <p class="review-text">CreditKasa. Позичаю не вперше. Кожен раз все швидко, зрозуміло, і без зайвих дзвінків. Якісний сервіс.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">В'ячеслав П.</span>
+            <span class="review-rating">★★★☆☆</span>
+          </div>
+          <p class="review-text">Moneyveo. Завжди дають, але відсоток для повторного клієнта міг би бути і нижчим. Є над чим працювати.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Оксана Б.</span>
+            <span class="review-rating">★★★★☆</span>
+          </div>
+          <p class="review-text">Treba Credit. Моєму чоловіку не схвалили, а мені дали. Мабуть, у мене кредитна історія краща. Все індивідуально, але мені допомогло.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Кирило С.</span>
+            <span class="review-rating">★★★★★</span>
+          </div>
+          <p class="review-text">Selfie Credit — зручно, як ніде. Заповнив усе за 5 хвилин і вже користуєшся грошима. Навіть не віриться, що так швидко.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Антон В.</span>
+            <span class="review-rating">★★★★☆</span>
+          </div>
+          <p class="review-text">Твоя Позика. Позичав для бізнесу. 150 000 ₴ — це серйозна сума для МФО. Заявку розглядали довше, але схвалили. Дякую.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <span class="review-author">Ельвіра М.</span>
+            <span class="review-rating">★★★★★</span>
+          </div>
+          <p class="review-text">CreditPlus. Я боялася великих відсотків, але 0,01% для новачків — це просто чудово! Повернула вчасно, без жодних проблем.</p>
+        </div>
+        </div>
+    </div>
+
+    <script>
+      // Отримуємо елементи DOM
+      const menuIcon = document.getElementById('menuIcon');
+      const sideMenu = document.getElementById('sideMenu');
+      const closeMenuBtn = document.getElementById('closeMenuBtn');
+      const body = document.body;
+
+      // Функція для відкриття меню
+      function openMenu() {
+        sideMenu.classList.add('open');
+        body.style.overflow = 'hidden'; // Забороняємо прокрутку основного контенту
+      }
+
+      // Функція для закриття меню
+      function closeMenu() {
+        sideMenu.classList.remove('open');
+        body.style.overflow = ''; // Відновлюємо прокрутку
+      }
+
+      // Додаємо обробники подій
+      menuIcon.addEventListener('click', openMenu);
+      closeMenuBtn.addEventListener('click', closeMenu);
+
+      // Додатково: Закриття меню при кліку поза ним
+      document.addEventListener('click', (event) => {
+        // Якщо клік був поза меню та не на іконці меню
+        if (!sideMenu.contains(event.target) && !menuIcon.contains(event.target) && sideMenu.classList.contains('open')) {
+          closeMenu();
+        }
+      });
+      
+      // Запобігання закриттю меню при кліку всередині
+      sideMenu.addEventListener('click', (event) => {
+          event.stopPropagation();
+      });
+
+    </script>
 </body>
 </html>
